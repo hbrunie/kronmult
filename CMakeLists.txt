@@ -3,6 +3,13 @@
     if (USE_GPU)
         project(kronmult LANGUAGES CXX CUDA) 
         add_compile_definitions(USE_GPU)
+        ## TO avoid error:
+        # requires the language dialect "CUDA17" (with compiler
+        # extensions), but CMake does not know the compile flags to use to enable it.
+        set(CMAKE_CXX_STANDARD 17)
+        set(CMAKE_CUDA_STANDARD 14)
+        set(CMAKE_CUDA_STANDARD_REQUIRED TRUE)
+        set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
     else ()
         project(kronmult LANGUAGES CXX) 
     endif ()
