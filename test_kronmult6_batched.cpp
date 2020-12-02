@@ -112,29 +112,29 @@ T test_kronmult_batched(  int const idim,
         T *dYarray_ = (T *) myalloc( sizeof(T)*Xsize * batchCount );
         T *dWarray_ = (T *) myalloc( sizeof(T)*Xsize * batchCount );
 
-        auto Aarray = [&] (int const i, 
+        auto Aarray = [=] (int const i, 
                            int const j, 
                            int const k, 
                            int const ibatch ) -> T& {
                 return(  Aarray_[ indx4f(i,j,k,ibatch, n,n,idim) ] );
         };
 
-        auto Xarray = [&] (int const i, 
+        auto Xarray = [=] (int const i, 
                            int const ibatch) -> T& {
                 return( Xarray_[ indx2f(i,ibatch,Xsize) ] );
         };
 
-        auto Yarray = [&] (int const i, 
+        auto Yarray = [=] (int const i, 
                            int const ibatch) -> T& {
                 return( Yarray_[ indx2f(i,ibatch,Xsize) ] );
         };
 
-        auto Zarray = [&] (int const i, 
+        auto Zarray = [=] (int const i, 
                            int const ibatch) -> T& {
                 return( Zarray_[ indx2f(i,ibatch,Xsize) ] );
         };
 
-        auto Warray = [&] (int const i, 
+        auto Warray = [=] (int const i, 
                            int const ibatch) -> T& {
                 return( Warray_[ indx2f(i,ibatch,Xsize) ] );
         };
