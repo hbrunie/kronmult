@@ -2,6 +2,7 @@
 #define KGEMM_NT_HPP 1
 
 #include "kroncommon.hpp"
+#include <stdio.h>
 
 
 //  -----------------------
@@ -17,6 +18,7 @@ void kgemm_nt( int const mm, int const nn, int const kk,
                T const beta,
                T * C_,  int const ldC)
 {
+  printf("nt %d %d %d (%d)\n",mm,nn,kk,INT_MAX);
 #ifdef USE_LAMBDA
         auto min = []( int const x, int const y) {
                 return(  (x < y) ? x : y );

@@ -2,6 +2,7 @@
 #define  KRONMULT3_HPP 1
 
 #include "kroncommon.hpp"
+#include <stdio.h>
 
 #include "kgemm_nt.hpp"
 #include "kronmult2.hpp"

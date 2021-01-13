@@ -1,5 +1,6 @@
 #include "kroncommon.hpp"
 #include "kgemm_nt.hpp"
+#include <stdio.h>
 
 DEVICE_FUNCTION
 void kgemm_nt( int const mm, int const nn, int const kk,
