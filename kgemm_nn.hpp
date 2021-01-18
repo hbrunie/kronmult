@@ -18,7 +18,24 @@ void kgemm_nn( int const mm, int const nn, int const kk,
                T const beta,
                T * C_,  int const ldC)
 {
-  printf("nn %d %d %d (%d)\n",mm,nn,kk, INT_MAX);
+    static long long sameCounter=1;
+    static int MM=0;
+    static int NN=0;
+    static int KK=0;
+    if(threadIdx.x == 0 && blockIdx.x == 0 ){
+    if((MM != mm)
+            || (NN != nn)
+            || (KK != kk)
+            ){
+        //printf("nn %d %d %d (%lld)\n",mm,nn,kk,sameCounter);
+        printf("nn %d %d %d (%lld)\n",MM,NN,KK,sameCounter);
+        MM=mm;
+        NN=nn;
+        KK=kk;
+    sameCounter=0;
+    }
+    sameCounter++;
+}
 #ifdef USE_LAMBDA
         auto min = []( int const x, int const y) {
                 return(  (x < y) ? x : y );
